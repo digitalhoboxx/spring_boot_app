@@ -1,23 +1,24 @@
 package com.example.SpringBootTutorial.worldtime;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
+
 @RestController
-@RequestMapping(path="api/v1/worldtime")
+@RequestMapping("api/v1/worldtime")
 public class WorldTimeController {
-    private final WorldTimeService worldTimeService;
-    public WorldTimeController(WorldTimeService worldTimeService) {
-        this.worldTimeService = worldTimeService;
+    private final RestTemplate restTemplate;
+    public WorldTimeController(RestTemplateBuilder restTemplateBuilder) {
+        this.restTemplate = restTemplateBuilder.build();
     }
 
-    @GetMapping
-    public String getWorldTime() {
-        String uri = "";
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-        return result;
+    @GetMapping("{zone}/{city}")
+    public String getWorldTime(@PathVariable("zone") String zone, @PathVariable("city") String city) {
+        return WorldTimeService.getWorldTime(zone, city);
     }
+
 }
