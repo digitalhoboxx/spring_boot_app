@@ -1,9 +1,12 @@
 package com.example.SpringBootTutorial.worldtime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
 @Table
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WorldTime {
     @Id
     @SequenceGenerator(

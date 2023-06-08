@@ -19,7 +19,7 @@ public class WorldTimeService {
         this.worldTimeRepository = worldTimeRepository;
     }
 
-    public static String getWorldTime(String zone, String city) {
+    public static String getWorldTime(String zone, String city) throws JsonProcessingException {
         String uri = "http://worldtimeapi.org/api/timezone/" + zone + "/" + city;
 
         RestTemplate restTemplate = new RestTemplate();
@@ -42,7 +42,7 @@ public class WorldTimeService {
 
         if (response.getStatusCode() == HttpStatus.OK) {
             System.out.println("Request Successful.");
-            return response.getBody();
+            return processWorldTime(response.getBody());
         } else {
             System.out.println("Request Failed");
             return response.getStatusCode().toString();
@@ -52,10 +52,6 @@ public class WorldTimeService {
     public static String processWorldTime(String input) throws JsonProcessingException {
         WorldTime worldTime = new ObjectMapper().readValue(input, WorldTime.class);
         return worldTime.toString();
-    }
-
-    public static void postWorldTime(String worldTime) {
-
     }
 
 }

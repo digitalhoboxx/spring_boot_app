@@ -1,5 +1,6 @@
 package com.example.SpringBootTutorial.worldtime;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,13 +18,8 @@ public class WorldTimeController {
     }
 
     @GetMapping("{zone}/{city}")
-    public String getWorldTime(@PathVariable("zone") String zone, @PathVariable("city") String city) {
+    public String getWorldTime(@PathVariable("zone") String zone, @PathVariable("city") String city) throws JsonProcessingException {
         return WorldTimeService.getWorldTime(zone, city);
-    }
-
-    @PostMapping
-    public void postWorldTime(String worldTime){
-        WorldTimeService.postWorldTime(worldTime);
     }
 
 }
