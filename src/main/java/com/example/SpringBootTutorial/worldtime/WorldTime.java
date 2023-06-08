@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
+//needed (to not return client_ip) in this implementation
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WorldTime {
     @Id

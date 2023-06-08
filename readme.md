@@ -10,9 +10,11 @@ Database Layer -done
 
 2. implement worldtime api https://worldtimeapi.org/ \
 make an API call -done\
-remove client IP info \
-send the new json 
+remove client IP info -done\
+send the new json -done
 *the WorldTime class is set up (and needs to be able) to communicate with the database though this functionality is not yet needed
 
+3. ?
 
-3. profit
+
+4. profit

@@ -19,6 +19,7 @@ public class WorldTimeService {
         this.worldTimeRepository = worldTimeRepository;
     }
 
+//makes the api call to WorldTime and passes it for processing
     public static String getWorldTime(String zone, String city) throws JsonProcessingException {
         String uri = "http://worldtimeapi.org/api/timezone/" + zone + "/" + city;
 
@@ -48,7 +49,7 @@ public class WorldTimeService {
             return response.getStatusCode().toString();
         }
     }
-
+//makes use of WorldTime.toString() to only pass along the selected parameters
     public static String processWorldTime(String input) throws JsonProcessingException {
         WorldTime worldTime = new ObjectMapper().readValue(input, WorldTime.class);
         return worldTime.toString();
