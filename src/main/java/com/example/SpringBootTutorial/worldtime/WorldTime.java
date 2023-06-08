@@ -1,10 +1,9 @@
 package com.example.SpringBootTutorial.worldtime;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 
+@Entity
+@Table
 public class WorldTime {
     @Id
     @SequenceGenerator(
@@ -33,28 +32,48 @@ public class WorldTime {
     private String utc_offset;
     private Integer week_number;
 
-    public String getAbbreviation() {
-        return abbreviation;
+    public WorldTime() {
     }
 
-    @Override
-    public String toString() {
-        return "WorldTime{" +
-                "abbreviation='" + abbreviation + '\'' +
-                ", datetime='" + datetime + '\'' +
-                ", day_of_week=" + day_of_week +
-                ", day_of_year=" + day_of_year +
-                ", dst=" + dst +
-                ", dst_from='" + dst_from + '\'' +
-                ", dst_offset=" + dst_offset +
-                ", dst_until='" + dst_until + '\'' +
-                ", raw_offset=" + raw_offset +
-                ", timezone='" + timezone + '\'' +
-                ", unixtime=" + unixtime +
-                ", utc_datetime='" + utc_datetime + '\'' +
-                ", utc_offset='" + utc_offset + '\'' +
-                ", week_number=" + week_number +
-                '}';
+    public WorldTime(String abbreviation, String client_ip, String datetime, Integer day_of_week, Integer day_of_year, boolean dst, String dst_from, Integer dst_offset, String dst_until, Integer raw_offset, String timezone, Integer unixtime, String utc_datetime, String utc_offset, Integer week_number) {
+        this.abbreviation = abbreviation;
+        this.client_ip = client_ip;
+        this.datetime = datetime;
+        this.day_of_week = day_of_week;
+        this.day_of_year = day_of_year;
+        this.dst = dst;
+        this.dst_from = dst_from;
+        this.dst_offset = dst_offset;
+        this.dst_until = dst_until;
+        this.raw_offset = raw_offset;
+        this.timezone = timezone;
+        this.unixtime = unixtime;
+        this.utc_datetime = utc_datetime;
+        this.utc_offset = utc_offset;
+        this.week_number = week_number;
+    }
+
+    public WorldTime(Long id, String abbreviation, String client_ip, String datetime, Integer day_of_week, Integer day_of_year, boolean dst, String dst_from, Integer dst_offset, String dst_until, Integer raw_offset, String timezone, Integer unixtime, String utc_datetime, String utc_offset, Integer week_number) {
+        this.id = id;
+        this.abbreviation = abbreviation;
+        this.client_ip = client_ip;
+        this.datetime = datetime;
+        this.day_of_week = day_of_week;
+        this.day_of_year = day_of_year;
+        this.dst = dst;
+        this.dst_from = dst_from;
+        this.dst_offset = dst_offset;
+        this.dst_until = dst_until;
+        this.raw_offset = raw_offset;
+        this.timezone = timezone;
+        this.unixtime = unixtime;
+        this.utc_datetime = utc_datetime;
+        this.utc_offset = utc_offset;
+        this.week_number = week_number;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
     public void setAbbreviation(String abbreviation) {
@@ -165,43 +184,23 @@ public class WorldTime {
         this.week_number = week_number;
     }
 
-    public WorldTime() {
-    }
-
-    public WorldTime(String abbreviation, String client_ip, String datetime, Integer day_of_week, Integer day_of_year, boolean dst, String dst_from, Integer dst_offset, String dst_until, Integer raw_offset, String timezone, Integer unixtime, String utc_datetime, String utc_offset, Integer week_number) {
-        this.abbreviation = abbreviation;
-        this.client_ip = client_ip;
-        this.datetime = datetime;
-        this.day_of_week = day_of_week;
-        this.day_of_year = day_of_year;
-        this.dst = dst;
-        this.dst_from = dst_from;
-        this.dst_offset = dst_offset;
-        this.dst_until = dst_until;
-        this.raw_offset = raw_offset;
-        this.timezone = timezone;
-        this.unixtime = unixtime;
-        this.utc_datetime = utc_datetime;
-        this.utc_offset = utc_offset;
-        this.week_number = week_number;
-    }
-
-    public WorldTime(Long id, String abbreviation, String client_ip, String datetime, Integer day_of_week, Integer day_of_year, boolean dst, String dst_from, Integer dst_offset, String dst_until, Integer raw_offset, String timezone, Integer unixtime, String utc_datetime, String utc_offset, Integer week_number) {
-        this.id = id;
-        this.abbreviation = abbreviation;
-        this.client_ip = client_ip;
-        this.datetime = datetime;
-        this.day_of_week = day_of_week;
-        this.day_of_year = day_of_year;
-        this.dst = dst;
-        this.dst_from = dst_from;
-        this.dst_offset = dst_offset;
-        this.dst_until = dst_until;
-        this.raw_offset = raw_offset;
-        this.timezone = timezone;
-        this.unixtime = unixtime;
-        this.utc_datetime = utc_datetime;
-        this.utc_offset = utc_offset;
-        this.week_number = week_number;
+    @Override
+    public String toString() {
+        return "WorldTime{" +
+                "abbreviation='" + abbreviation + '\'' +
+                ", datetime='" + datetime + '\'' +
+                ", day_of_week=" + day_of_week +
+                ", day_of_year=" + day_of_year +
+                ", dst=" + dst +
+                ", dst_from='" + dst_from + '\'' +
+                ", dst_offset=" + dst_offset +
+                ", dst_until='" + dst_until + '\'' +
+                ", raw_offset=" + raw_offset +
+                ", timezone='" + timezone + '\'' +
+                ", unixtime=" + unixtime +
+                ", utc_datetime='" + utc_datetime + '\'' +
+                ", utc_offset='" + utc_offset + '\'' +
+                ", week_number=" + week_number +
+                '}';
     }
 }

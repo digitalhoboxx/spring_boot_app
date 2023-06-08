@@ -15,9 +15,10 @@ public class WorldTimeService {
         this.worldTimeRepository = worldTimeRepository;
     }
 
-    public WorldTime getNewWorldTime() {
-        return WorldTime;
-    }
+//    public WorldTime getNewWorldTime() {
+//        WorldTime worldTime = new WorldTime();
+//        return worldTime;
+//    }
 
     public List<WorldTime> getSavedWorldTimes() {
         return worldTimeRepository.findAll();
