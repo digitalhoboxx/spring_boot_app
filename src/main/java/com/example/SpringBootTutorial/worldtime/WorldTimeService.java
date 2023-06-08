@@ -1,5 +1,7 @@
 package com.example.SpringBootTutorial.worldtime;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -46,4 +48,14 @@ public class WorldTimeService {
             return response.getStatusCode().toString();
         }
     }
+
+    public static String processWorldTime(String input) throws JsonProcessingException {
+        WorldTime worldTime = new ObjectMapper().readValue(input, WorldTime.class);
+        return worldTime.toString();
+    }
+
+    public static void postWorldTime(String worldTime) {
+
+    }
+
 }

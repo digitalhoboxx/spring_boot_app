@@ -21,4 +21,9 @@ public class WorldTimeController {
         return WorldTimeService.getWorldTime(zone, city);
     }
 
+    @PostMapping
+    public void postWorldTime(String worldTime){
+        WorldTimeService.postWorldTime(worldTime);
+    }
+
 }
